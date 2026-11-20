@@ -1,0 +1,38 @@
+tabla,columna,descripcion,origen
+envios,id_envio,Identificador propio del envío (no es el ID de CBP),generada
+envios,fecha_decomiso,"Fecha del decomiso, uniforme dentro del año fiscal",simulada
+envios,anio_fiscal_cbp,Año fiscal de CBP (2023 o 2024) según el peso de cada año,real (proxy EE. UU.)
+envios,trimestre,Trimestre natural de la fecha de decomiso (para cohortes),derivada
+envios,via_transporte,"Exprés, correo, carga u otra",real (proxy EE. UU.)
+envios,categoria,"Prendas y accesorios, bolsos y carteras, relojería y joyería, calzado",real (proxy) con supuesto
+envios,subcategoria,Subcategoría PEFCR de prendas y calzado (equiprobables),real (UE) con supuesto
+envios,material_dominante,"Textil, caucho y cuero, plástico sintético o metal",supuesto
+envios,pais_origen,"China, Hong Kong, Turquía u otros","real (UE) con supuesto"
+envios,n_lineas,"Líneas del envío, calibradas a CBP y dependientes de las unidades",real (proxy EE. UU.)
+envios,unidades,Unidades (piezas o pares) del envío,real (proxy EE. UU.)
+envios,valor_msrp_usd,Valor del producto original (unidades x valor unitario de la categoría),real (proxy EE. UU.)
+envios,peso_kg,Peso estimado del envío,real (UE) / supuesto débil
+envios,volumen_m3,Volumen estimado del envío,real (UE) / supuesto
+envios,n_palets,"Palés necesarios (1 palé = 1 m3, mínimo 1)",supuesto
+envios,elegible_simplificado,"Envío postal o exprés con 3 unidades o menos, o menos de 2 kg (Reglamento 608/2013, art. 2.19)",legal
+envios,adhesion_titular,El titular pidió el procedimiento simplificado (70 %),supuesto
+envios,oposicion_declarante,El declarante se opone a la destrucción (≈ 8 %; ver parametros_generador.csv),supuesto
+envios,circuito,"simplificado, estandar o litigioso",derivada
+envios,dias_tramite,Días naturales hasta el acuerdo (14) o hasta iniciar el procedimiento (14-28),legal (conversión propia)
+envios,dias_procedimiento,Duración del procedimiento en el circuito litigioso,supuesto
+envios,dias_logistica,Días entre el acuerdo y la destrucción física,supuesto
+envios,dias_custodia,dias_tramite + dias_procedimiento + dias_logistica,derivada
+envios,dias_espera_agrupacion,"Días extra de espera para agrupar el envío (solo escenario S2, envíos < 1 t)",supuesto
+envios,fecha_destruccion,fecha_decomiso + dias_custodia,derivada
+envios,ef_incineracion_tco2_t,Factor de incineración (tCO2 por tonelada) según el material,real (IPCC) con rango triangular
+envios,emisiones_incineracion_tco2,peso en toneladas x factor,derivada
+costes,id_envio,Clave para unir con la tabla de envíos,generada
+costes,iso2 / pais,País de la UE en el que se costea el envío (15 países),"real (UE, 2022)"
+costes,almacenaje_s1_eur,Almacenaje: palés x tarifa diaria x días de custodia + manipulación,derivada
+costes,destruccion_s1_eur,"Escenario S1: destrucción con mínimo de 1 t por envío (en simplificado, solo tasas)",derivada
+costes,coste_titular_s1_eur,"Parte que asume el titular en S1 (si 1; parcial 0,5; no 0)",derivada
+costes,coste_sistema_s1_eur,"Coste total del almacenaje y la destrucción en S1, lo pague quien lo pague",derivada
+costes,almacenaje_s2_eur,Escenario S2: igual que S1 pero sumando los días de espera por agrupación,derivada
+costes,destruccion_s2_eur,Escenario S2: destrucción proporcional al peso,derivada
+costes,coste_titular_s2_eur,Parte que asume el titular en S2,derivada
+costes,coste_sistema_s2_eur,Coste total en S2,derivada

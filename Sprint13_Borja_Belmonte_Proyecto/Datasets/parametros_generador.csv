@@ -1,0 +1,31 @@
+parametro,valor,tipo,fuente_o_nota
+semilla,2026,técnico,reproducibilidad
+líneas por envío,dependen de las unidades; calibradas a mediana y P90 por vía,real (proxy EE. UU.),CBP FY2023-24
+n_envios,12000,técnico,objetivo de la propuesta: al menos 10.000 registros
+reparto_vias (exprés/correo/carga/otra),"59,8/26,0/10,3/3,9 %",real (proxy EE. UU.),"CBP FY2023-24, envíos de moda"
+"tamaño: p(≤5 uds), mu, sigma por vía",ver código (PARAM); unidades recortadas entre 6 y el tope,real (proxy EE. UU.),CBP FY2023-24; carga solo FY2024 (sensibilidad FY2023 con --cargo FY2023)
+tope de unidades por vía (P99),5 x el P99 de CBP por vía,supuesto sobre datos CBP,evita lotes de millones de unidades; sigma de cada vía ajustada a su P90 y P99 observados
+reparto de categorías,"37,0/26,8/21,3/15,0 %",real (proxy) con supuesto,líneas de CBP usadas como proxy del reparto por envío
+valor unitario por categoría,"lognormal, mediana 440-1.790 USD",real (proxy EE. UU.),CBP tras la regla de extremos
+peso por unidad: prendas y calzado,"subcategorías PEFCR equiprobables (media 0,31 kg y 0,78 kg/par)",real (UE) con supuesto,"PEFCR ropa y calzado v3.1, tablas A.IV 2 y A.IV 3; la equiprobabilidad es supuesto"
+peso por unidad: bolsos y relojería/joyería,"0,50 y 0,05 kg (central)",supuesto débil,fichas de producto; sin fuente fiable
+volumen por unidad,"4,7 L prendas; 15,6 L calzado",real (UE) / supuesto,"PEFCR tabla 35; bolsos 8 L y relojes 0,3 L son supuestos"
+m3 por palé,1.0,supuesto,"1 palé ≈ 1 m3 (EUIPO usa palé de 0,96 m2)"
+material por categoría,ver código (MATERIAL_P),supuesto,sin fuente
+factor de incineración (tCO2/t),"textil 0,29; caucho y cuero 0,41; plásticos 2,75",real (IPCC),"IPCC 2006 vol. 5, tablas 2.4 y 5.2 (solo CO2 fósil); rangos triangulares"
+origen de la mercancía,"China 41 %, Hong Kong 6 %, Turquía 19 %, otros 34 %",real (UE),"EUIPO/DG TAXUD, EU enforcement of IPRs 2025: incautaciones en frontera, por número de artículos, todas las categorías (redondeado); contraste OCDE/EUIPO 2025 (2020-21): China más de la mitad, Turquía 22 %, Hong Kong 12 %"
+elegible a procedimiento simplificado,envío postal o exprés con ≤3 uds o <2 kg,legal,"Reglamento 608/2013, arts. 2.19 y 26"
+adhesión del titular,0.7,supuesto,sin fuente
+oposición del declarante (circuito litigioso),0.08,real (UE) con supuesto,"EUIPO/DG TAXUD 2025: 7,63 % penal nacional + 0,32 % juicio de los procedimientos en frontera (≈ 8 %); se asume que equivale a oposición; sensibilidad 2-15 %"
+días de trámite,14,legal (conversión propia),10 días hábiles ≈ 14 naturales; arts. 23 y 26
+logística de destrucción (días),simplificado 0/2/10; resto 3/10/45,supuesto,triangular; sin plazo legal
+inicio del procedimiento litigioso (días),14-28,legal,arts. 23.3 y 23.4
+duración del procedimiento litigioso,"mediana 180 d, sigma 1.0, máx. 1460",supuesto,sin fuente; sensibilidad 90/365/730
+"espera por agrupación (días, S2)",0/15/60 en envíos < 1 t,supuesto,triangular; solo en escenario S2
+escenario S1,destrucción con mínimo de 1 t por envío,supuesto,EUIPO p. 31 describe el mínimo solo cualitativamente
+escenario S2,destrucción proporcional al peso + espera,supuesto,equivale a agrupar lotes
+tarifas de destrucción y almacén por país,15 países,"real (UE, 2022)","EUIPO 2023, anexos I y II; ver tarifas_ue_2022.csv"
+"tarifa de destrucción para bolsos, calzado y relojería",igual que textil,supuesto,solo hay tarifa de textil
+quién paga ('parcial'),0.5,supuesto,"'si' = 1, 'parcial' = 0,5, 'no' = 0"
+Francia: coste del sistema,324.6,supuesto,la tarifa informada es 0 porque paga aduanas; se usa la media EUIPO
+fecha del decomiso,uniforme dentro del año fiscal de CBP,simulada,CBP solo da el año fiscal
