@@ -11,20 +11,23 @@ Impacto financiero y ambiental de la mercancía falsificada retenida en la front
 - **H2:** esperar sale barato; lo caro es destruir.
 - **H3:** el plástico supone el 33 % del peso y el 81 % del CO₂.
 
-## Contenido
+## Contenido de la entrega
 
-| Carpeta | Qué hay |
+| Entregable | Dónde está |
 | --- | --- |
-| `1_informe/` | Informe final en PDF (4 páginas) |
-| `2_datasets/` | Datos usados en Power BI: envíos sintéticos, costes por país, tarifas, parámetros y diccionario de columnas |
-| `3_powerbi/` | Panel de Power BI exportado a PDF y documento con las medidas DAX |
-| `4_presentacion/` | Presentación de la defensa |
-| `codigo/` | Generador y validador del dataset y notebook de análisis (Python) |
+| Informe final (PDF, 4 páginas) | [`informe_final_ESG_falsificaciones.pdf`](informe_final_ESG_falsificaciones.pdf) |
+| Conjuntos de datos usados en Power BI | carpeta [`Datasets/`](Datasets/) |
+| Trabajo de Power BI en PDF | [`powerbi_ESG_falsificaciones.pdf`](powerbi_ESG_falsificaciones.pdf) |
+| Documento con las fórmulas DAX | [`medidas_DAX_ESG_falsificaciones.pdf`](medidas_DAX_ESG_falsificaciones.pdf) |
+| Presentación de la defensa | [`¿Cuánto cuesta destruir lo falsificado.pptx`](<¿Cuánto cuesta destruir lo falsificado.pptx>) |
+| Código: generador, validador y notebook de análisis | carpeta [`Codigo/`](Codigo/) |
 
 ## Cómo reproducir los datos
 1. Instalar `pandas` y `numpy`.
-2. Ejecutar `python generador_dataset.py` para generar el dataset (semilla 2026, reproducible).
+2. Ejecutar `python generador_dataset.py` (en `Codigo/`) para generar el dataset (semilla 2026, reproducible).
 3. Ejecutar `python validar_dataset.py` para comprobar IDs únicos, ausencia de nulos y coherencia de fechas.
+
+Más detalle en el [README de `Datasets/`](Datasets/README.md).
 
 ## Fuentes principales
 Reglamento (UE) n.º 608/2013; EUIPO (2023), *Storage and destruction of seized counterfeit goods in the EU*; IPCC (2006), *Guidelines for National Greenhouse Gas Inventories*, vol. 5; CBP (EE. UU.), años fiscales 2023-2024; Agencia Tributaria, Operación Quinto (2023). Las referencias completas están en el informe.
